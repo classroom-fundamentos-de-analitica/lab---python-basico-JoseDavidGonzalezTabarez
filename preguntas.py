@@ -11,39 +11,46 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-def pregunta_01(path):
+# def pregunta_01(path):
 
-    """Retorne la suma de la segunda columna.
+#     """Retorne la suma de la segunda columna.
+#     Rta/
+#     214"""
+#     suma = 0
+#     with open(path) as file:
+#         for line in file:
+#             line = line.replace("\n","")
+#             line = line.replace("\t",",")
+#             current_line = line.split(",")
+#             suma = suma + int(current_line[1])
+#     return suma
+
+def pregunta_02(path):
+    """
+    Retorne la cantidad de registros por cada letra de la primera columna como la lista
+    de tuplas (letra, cantidad), ordendas alfabéticamente.
     Rta/
-    214"""
-    suma = 0
+    [
+        ("A", 8),
+        ("B", 7),
+        ("C", 5),
+        ("D", 6),
+        ("E", 14),
+    ]"""
+    dict_letras ={}
     with open(path) as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
             current_line = line.split(",")
-            suma = suma + int(current_line[1])
-    return suma
-
-x = pregunta_01(".\data.csv")
-print(x)
-
-# def pregunta_02():
-#     """
-#     Retorne la cantidad de registros por cada letra de la primera columna como la lista
-#     de tuplas (letra, cantidad), ordendas alfabéticamente.
-
-#     Rta/
-#     [
-#         ("A", 8),
-#         ("B", 7),
-#         ("C", 5),
-#         ("D", 6),
-#         ("E", 14),
-#     ]
-
-#     """
-#     return
+            current_line = current_line[0]
+            if current_line in dict_letras:
+                dict_letras[current_line] = dict_letras[current_line]+1
+            else: dict_letras[current_line] = 1
+    dict_letras = sorted(dict_letras.items())
+                    
+            
+    return dict_letras
 
 # def pregunta_03():
 #     """
