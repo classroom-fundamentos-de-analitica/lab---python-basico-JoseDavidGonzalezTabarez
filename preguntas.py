@@ -113,22 +113,32 @@ def pregunta_04(path):
     dict_letras = sorted(dict_letras.items())
     return dict_letras
 
-# def pregunta_05():
-#     """
-#     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
-#     letra de la columa 1.
+def pregunta_05(path):
+    """Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
+    letra de la columa 1.
+    Rta/
+    [("A", 9, 2),
+        ("B", 9, 1),
+        ("C", 9, 0),
+        ("D", 8, 3),
+        ("E", 9, 1),]"""
 
-#     Rta/
-#     [
-#         ("A", 9, 2),
-#         ("B", 9, 1),
-#         ("C", 9, 0),
-#         ("D", 8, 3),
-#         ("E", 9, 1),
-#     ]
+    dict_letras ={}
+    with open(path) as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            line = line.split(",")
+            linea_numeros = line[1]
+            linea_letras = line[0]
+            if linea_letras in dict_letras:
+                dict_letras[linea_letras].append(linea_numeros)
+            else: dict_letras[linea_letras] = [linea_numeros]
 
-#     """
-#     return
+    for key in dict_letras:
+        dict_letras[key] = [max(dict_letras[key]), min(dict_letras[key])]
+
+    return sorted(dict_letras.items())
 
 # def pregunta_06():
 #     """
