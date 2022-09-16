@@ -11,19 +11,19 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-# def pregunta_01(path):
+def pregunta_01(path):
 
-#     """Retorne la suma de la segunda columna.
-#     Rta/
-#     214"""
-#     suma = 0
-#     with open(path) as file:
-#         for line in file:
-#             line = line.replace("\n","")
-#             line = line.replace("\t",",")
-#             current_line = line.split(",")
-#             suma = suma + int(current_line[1])
-#     return suma
+    """Retorne la suma de la segunda columna.
+    Rta/
+    214"""
+    suma = 0
+    with open(path) as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            current_line = line.split(",")
+            suma = suma + int(current_line[1])
+    return suma
 
 def pregunta_02(path):
     """
@@ -52,22 +52,33 @@ def pregunta_02(path):
             
     return dict_letras
 
-# def pregunta_03():
-#     """
-#     Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
-#     de tuplas (letra, suma) ordendas alfabeticamente.
+def pregunta_03(path):
+    """Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
+    de tuplas (letra, suma) ordendas alfabeticamente.
+    Rta/
+    [
+        ("A", 53),
+        ("B", 36),
+        ("C", 27),
+        ("D", 31),
+        ("E", 67),
+    ]"""
 
-#     Rta/
-#     [
-#         ("A", 53),
-#         ("B", 36),
-#         ("C", 27),
-#         ("D", 31),
-#         ("E", 67),
-#     ]
-
-#     """
-#     return
+    dict_letras ={}
+    with open(path) as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            line = line.split(",")
+            linea_letras = line[0]
+            linea_suma = line[1]
+            if linea_letras in dict_letras:
+                dict_letras[linea_letras] = int(dict_letras[linea_letras])+int(linea_suma)
+                
+            else: 
+                dict_letras[linea_letras] = linea_suma
+    dict_letras = sorted(dict_letras.items())
+    return dict_letras
 
 # def pregunta_04():
 #     """
