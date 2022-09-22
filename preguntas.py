@@ -11,13 +11,13 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-def pregunta_01(path):
+def pregunta_01():
 
     """Retorne la suma de la segunda columna.
     Rta/
     214"""
     suma = 0
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -25,7 +25,7 @@ def pregunta_01(path):
             suma = suma + int(current_line[1])
     return suma
 
-def pregunta_02(path):
+def pregunta_02():
     """
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
     de tuplas (letra, cantidad), ordendas alfabéticamente.
@@ -38,7 +38,7 @@ def pregunta_02(path):
         ("E", 14),
     ]"""
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -52,7 +52,7 @@ def pregunta_02(path):
             
     return dict_letras
 
-def pregunta_03(path):
+def pregunta_03():
     """Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
     de tuplas (letra, suma) ordendas alfabeticamente.
     Rta/
@@ -65,7 +65,7 @@ def pregunta_03(path):
     ]"""
 
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -80,7 +80,7 @@ def pregunta_03(path):
     dict_letras = sorted(dict_letras.items())
     return dict_letras
 
-def pregunta_04(path):
+def pregunta_04():
     """La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
     registros por cada mes, tal como se muestra a continuación.
     Rta/
@@ -98,7 +98,7 @@ def pregunta_04(path):
         ("12", 3),]"""
 
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -113,7 +113,7 @@ def pregunta_04(path):
     dict_letras = sorted(dict_letras.items())
     return dict_letras
 
-def pregunta_05(path):
+def pregunta_05():
     """Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
     Rta/
@@ -124,7 +124,7 @@ def pregunta_05(path):
         ("E", 9, 1),]"""
 
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -140,7 +140,7 @@ def pregunta_05(path):
 
     return sorted(dict_letras.items())
 
-def pregunta_06(path):
+def pregunta_06():
     """La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
     clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
@@ -157,7 +157,7 @@ def pregunta_06(path):
         ("iii", 0, 9),
         ("jjj", 5, 17),]"""
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -173,7 +173,7 @@ def pregunta_06(path):
 
     return sorted(dict_letras.items())
 
-def pregunta_07(path):
+def pregunta_07():
     """Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
     a dicho valor de la columna 2.
@@ -189,7 +189,7 @@ def pregunta_07(path):
         (8, ["E", "D", "E", "A", "B"]),
         (9, ["A", "B", "E", "A", "A", "C"]),]"""
     dict_num ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -205,7 +205,7 @@ def pregunta_07(path):
 
     return tple
 
-def pregunta_08(path):
+def pregunta_08():
     """Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
     de la segunda columna; la segunda parte de la tupla es una lista con las letras
     (ordenadas y sin repetir letra) de la primera  columna que aparecen asociadas a dicho
@@ -222,7 +222,7 @@ def pregunta_08(path):
         (8, ["A", "B", "D", "E"]),
         (9, ["A", "B", "C", "E"]),]"""
     dict_num ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -243,7 +243,7 @@ def pregunta_08(path):
 
     return tple
 
-def pregunta_09(path):
+def pregunta_09():
     """Retorne un diccionario que contenga la cantidad de registros en que aparece cada
     clave de la columna 5.
     Rta/
@@ -259,7 +259,7 @@ def pregunta_09(path):
         "jjj": 18,}"""
     
     dict_letras ={}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
@@ -276,7 +276,7 @@ def pregunta_09(path):
 
     return registros
 
-def pregunta_10(path):
+def pregunta_10():
     """Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
     cantidad de elementos de las columnas 4 y 5.
     Rta/
@@ -290,7 +290,7 @@ def pregunta_10(path):
     ]"""
     
     lst =[]
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.split("\t")
@@ -301,7 +301,7 @@ def pregunta_10(path):
 
     return lst
 
-def pregunta_11(path):
+def pregunta_11():
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
     columna 4, ordenadas alfabeticamente.
@@ -314,7 +314,7 @@ def pregunta_11(path):
         "f": 134,
         "g": 35,}"""
     dict_letras = {}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.split("\t")
@@ -326,7 +326,7 @@ def pregunta_11(path):
                 else: dict_letras[letra] = columna2
     return sorted(dict_letras.items())
 
-def pregunta_12(path):
+def pregunta_12():
     """Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
     los valores de la columna 5 sobre todo el archivo.
     Rta/
@@ -337,7 +337,7 @@ def pregunta_12(path):
         'E': 324}"""
 
     dict_letras = {}
-    with open(path) as file:
+    with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.split("\t")
