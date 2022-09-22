@@ -134,13 +134,52 @@ def pregunta_05():
             if linea_letras in dict_letras:
                 dict_letras[linea_letras].append(linea_numeros)
             else: dict_letras[linea_letras] = [linea_numeros]
-
-    for key in dict_letras:
+    lst=[]
+    lst_final=[]
+    for key in dict_letras:  
         dict_letras[key] = [max(dict_letras[key]), min(dict_letras[key])]
+    
+    lst = sorted(dict_letras.items())
+    for value in lst:
+        lst_temp = []
+        lst_final.append((value[0], value[1][0], value[1][1]))
 
-    return sorted(dict_letras.items())
+    return lst_final
 
 def pregunta_06():
+    """La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
+    una clave y el valor despues del caracter `:` corresponde al valor asociado a la
+    clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
+    grande computados sobre todo el archivo.
+    Rta/
+    [("aaa", 1, 9),
+        ("bbb", 1, 9),
+        ("ccc", 1, 10),
+        ("ddd", 0, 9),
+        ("eee", 1, 7),
+        ("fff", 0, 9),
+        ("ggg", 3, 10),
+        ("hhh", 0, 9),
+        ("iii", 0, 9),
+        ("jjj", 5, 17),]"""
+    dict_letras ={}
+    with open("data.csv") as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            for caracter in line.split(','):
+                if caracter.count(':') > 0:
+                    if caracter[:3] in dict_letras:
+                        dict_letras[caracter[:3]].append(int(caracter[4:]))
+                    else: 
+                        dict_letras[caracter[:3]] = [int(caracter[4:])]
+
+    for key, value in dict_letras.items():
+        dict_letras[key] = [min(value), max(value)]
+    lst = sorted(dict_letras.items())
+    lst.append("")
+    return lst
+
     """La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
     clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
