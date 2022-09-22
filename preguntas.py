@@ -141,8 +141,7 @@ def pregunta_05():
     
     lst = sorted(dict_letras.items())
     for value in lst:
-        lst_temp = []
-        lst_final.append((value[0], value[1][0], value[1][1]))
+        lst_final.append((value[0], int(value[1][0]), int(value[1][1])))
 
     return lst_final
 
@@ -175,10 +174,14 @@ def pregunta_06():
                         dict_letras[caracter[:3]] = [int(caracter[4:])]
 
     for key, value in dict_letras.items():
-        dict_letras[key] = [min(value), max(value)]
+        dict_letras[key] = [int(min(value)),int(max(value))]
     lst = sorted(dict_letras.items())
-    lst.append("")
-    return lst
+    
+    lst_final = []
+    for value in lst:
+        lst_final.append((value[0], int(value[1][0]), int(value[1][1])))
+
+    return lst_final
 
     """La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
@@ -240,9 +243,13 @@ def pregunta_07():
                 dict_num[linea_numeros].append(linea_letras)
             else: dict_num[linea_numeros] = [linea_letras] 
 
-    tple = sorted(dict_num.items())
+    lst = sorted(dict_num.items())
 
-    return tple
+    lst_final = []
+    for value in lst:
+        lst_final.append((int(value[0]),value[1]))
+
+    return lst_final
 
 def pregunta_08():
     """Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
@@ -278,9 +285,13 @@ def pregunta_08():
     for key, value in dict_num.items():
         dict_num[key] = (sorted(value))
         # dict_num[key] = sorted(dict_num.values())
-    tple = sorted(dict_num.items())
+    lst = sorted(dict_num.items())
 
-    return tple
+    lst_final = []
+    for value in lst:
+        lst_final.append((int(value[0]),value[1]))
+
+    return lst_final
 
 def pregunta_09():
     """Retorne un diccionario que contenga la cantidad de registros en que aparece cada
@@ -363,7 +374,12 @@ def pregunta_11():
                 if letra in dict_letras.keys():
                     dict_letras[letra] += columna2
                 else: dict_letras[letra] = columna2
-    return sorted(dict_letras.items())
+    lst = sorted(dict_letras.items())
+    dict_final = {}
+
+    for item in lst:
+        dict_final[item[0]] = item[1]
+    return dict_final
 
 def pregunta_12():
     """Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
