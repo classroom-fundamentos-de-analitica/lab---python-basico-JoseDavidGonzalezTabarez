@@ -140,52 +140,70 @@ def pregunta_05(path):
 
     return sorted(dict_letras.items())
 
-# def pregunta_06():
-#     """
-#     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
-#     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
-#     clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
-#     grande computados sobre todo el archivo.
+def pregunta_06(path):
+    """La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
+    una clave y el valor despues del caracter `:` corresponde al valor asociado a la
+    clave. Por cada clave, obtenga el valor asociado mas pequeño y el valor asociado mas
+    grande computados sobre todo el archivo.
+    Rta/
+    [("aaa", 1, 9),
+        ("bbb", 1, 9),
+        ("ccc", 1, 10),
+        ("ddd", 0, 9),
+        ("eee", 1, 7),
+        ("fff", 0, 9),
+        ("ggg", 3, 10),
+        ("hhh", 0, 9),
+        ("iii", 0, 9),
+        ("jjj", 5, 17),]"""
+    dict_letras ={}
+    with open(path) as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            for caracter in line.split(','):
+                if caracter.count(':') > 0:
+                    if caracter[:3] in dict_letras:
+                        dict_letras[caracter[:3]].append(int(caracter[4:]))
+                    else: 
+                        dict_letras[caracter[:3]] = [int(caracter[4:])]
 
-#     Rta/
-#     [
-#         ("aaa", 1, 9),
-#         ("bbb", 1, 9),
-#         ("ccc", 1, 10),
-#         ("ddd", 0, 9),
-#         ("eee", 1, 7),
-#         ("fff", 0, 9),
-#         ("ggg", 3, 10),
-#         ("hhh", 0, 9),
-#         ("iii", 0, 9),
-#         ("jjj", 5, 17),
-#     ]
+    for key, value in dict_letras.items():
+        dict_letras[key] = [min(value), max(value)]
 
-#     """
-#     return
+    return sorted(dict_letras.items())
 
-# def pregunta_07():
-#     """
-#     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
-#     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
-#     a dicho valor de la columna 2.
+def pregunta_07(path):
+    """Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
+    valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
+    a dicho valor de la columna 2.
+    Rta/
+    [(0, ["C"]),
+        (1, ["E", "B", "E"]),
+        (2, ["A", "E"]),
+        (3, ["A", "B", "D", "E", "E", "D"]),
+        (4, ["E", "B"]),
+        (5, ["B", "C", "D", "D", "E", "E", "E"]),
+        (6, ["C", "E", "A", "B"]),
+        (7, ["A", "C", "E", "D"]),
+        (8, ["E", "D", "E", "A", "B"]),
+        (9, ["A", "B", "E", "A", "A", "C"]),]"""
+    dict_num ={}
+    with open(path) as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            line = line.split(",")
+            linea_numeros = line[1]
+            linea_letras = line[0]
 
-#     Rta/
-#     [
-#         (0, ["C"]),
-#         (1, ["E", "B", "E"]),
-#         (2, ["A", "E"]),
-#         (3, ["A", "B", "D", "E", "E", "D"]),
-#         (4, ["E", "B"]),
-#         (5, ["B", "C", "D", "D", "E", "E", "E"]),
-#         (6, ["C", "E", "A", "B"]),
-#         (7, ["A", "C", "E", "D"]),
-#         (8, ["E", "D", "E", "A", "B"]),
-#         (9, ["A", "B", "E", "A", "A", "C"]),
-#     ]
+            if linea_numeros in dict_num:
+                dict_num[linea_numeros].append(linea_letras)
+            else: dict_num[linea_numeros] = [linea_letras] 
 
-#     """
-#     return
+    tple = sorted(dict_num.items())
+
+    return tple
 
 # def pregunta_08():
 #     """
